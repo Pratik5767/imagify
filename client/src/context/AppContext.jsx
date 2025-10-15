@@ -5,12 +5,16 @@ export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [showLogin, setShowLogin] = useState(false);
+
     const navigate = useNavigate();
 
     const value = {
         user,
         setUser,
-        navigate
+        navigate,
+        showLogin,
+        setShowLogin
     }
 
     return (
