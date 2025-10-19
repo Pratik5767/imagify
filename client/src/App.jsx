@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom"
 import { AppContext } from "./context/AppContext"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ProtectedRoute from "./components/ProtectedRoute"
 
 const App = () => {
     const { showLogin } = useContext(AppContext);
@@ -25,7 +26,16 @@ const App = () => {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/result" element={<Result />} />
+
+                <Route
+                    path="/result"
+                    element={
+                        <ProtectedRoute>
+                            <Result />
+                        </ProtectedRoute>
+                    }
+                />
+
                 <Route path="/buy" element={<BuyCredits />} />
             </Routes>
 
